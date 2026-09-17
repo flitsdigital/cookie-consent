@@ -1,6 +1,6 @@
 {
   "name": "@flitsdigital/cookie-consent",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Herbruikbare cookie consent (Consent Mode v2 + GTM) voor Webflow-sites van Flits Digital",
   "private": true,
   "scripts": {
