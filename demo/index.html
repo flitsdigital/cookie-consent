@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Flits cookie consent – demo</title>
+<link rel="stylesheet" href="../webflow/component.css">
+<style>body{font-family:system-ui,sans-serif;margin:0;padding:24px;color:#1b020d}pre{background:#f6f1f1;padding:12px;font-size:12px;overflow:auto;max-height:40vh}</style>
+
+<!-- 1. Config (per klant) -->
+<script>
+window.FlitsConsent = {
+  key: 'demo_consent',
+  version: 1,
+  days: 180,
+  clearOnRevoke: { analytics: ['_ga', '_ga_*', '_clck', '_clsk'], marketing: ['_gcl_*', '_fbp', '_fbc'] },
+  debug: true
+};
+</script>
+<!-- 2. Head-snippet (in Webflow: inhoud van dist/head.snippet.html inline plakken) -->
+<script src="../dist/head.min.js"></script>
+<!-- 3. Fake GTM: markeert in de dataLayer wanneer GTM zou laden en logt alles naar de pagina -->
+<script>
+dataLayer.push({ event: 'gtm.js' });
+(function () {
+  function render() {
+    var el = document.getElementById('log');
+    if (el) el.textContent = dataLayer.map(function (x) {
+      return JSON.stringify(x.length !== undefined && !Array.isArray(x) ? Array.prototype.slice.call(x) : x);
+    }).join('\n');
+  }
+  var push = dataLayer.push;
+  dataLayer.push = function () { var r = push.apply(this, arguments); render(); return r; };
+  document.addEventListener('DOMContentLoaded', render);
+})();
+</script>
+</head>
+<body>
+<h1>Cookie consent demo</h1>
+<p>Open de console voor <code>flits:consent</code>-events. dataLayer:</p>
+<pre id="log"></pre>
+<p><a href="#" data-cb-open="true">Cookie-instellingen</a> · <a href="#" onclick="FlitsConsent.reset();return false">Reset</a></p>
+
+<div data-cb="banner" role="dialog" aria-label="Cookie-instellingen" class="cb-banner">
+  <div class="cb-card">
+    <div class="cb-title">Wij gebruiken cookies</div>
+    <p class="cb-text">Wij gebruiken functionele cookies om de website goed te laten werken. Met uw toestemming gebruiken we ook cookies voor statistieken (Google Analytics en Microsoft Clarity) en advertenties (Google Ads en Meta). Lees meer in ons <a href="/privacybeleid" class="cb-link">privacybeleid</a>.</p>
+    <div data-cb="prefs" class="cb-prefs">
+      <div class="cb-row">
+        <div class="cb-row-content">
+          <div class="cb-row-title">Noodzakelijk</div>
+          <div class="cb-row-text">Nodig om de website goed te laten werken. Staat altijd aan.</div>
+        </div>
+        <div aria-disabled="true" class="cb-switch is-on is-locked"><div class="cb-knob"></div></div>
+      </div>
+      <div class="cb-row">
+        <div class="cb-row-content">
+          <div class="cb-row-title">Statistieken</div>
+          <div class="cb-row-text">Inzicht in hoe bezoekers de website gebruiken, via Google Analytics en Microsoft Clarity (heatmaps en geanonimiseerde sessie-opnames).</div>
+        </div>
+        <a href="#" role="switch" aria-checked="false" aria-label="Statistieken" data-cb-toggle="analytics" class="cb-switch w-inline-block"><div class="cb-knob"></div></a>
+      </div>
+      <div class="cb-row">
+        <div class="cb-row-content">
+          <div class="cb-row-title">Marketing</div>
+          <div class="cb-row-text">Meten en tonen van advertenties via Google Ads en Meta (Facebook en Instagram).</div>
+        </div>
+        <a href="#" role="switch" aria-checked="false" aria-label="Marketing" data-cb-toggle="marketing" class="cb-switch w-inline-block"><div class="cb-knob"></div></a>
+      </div>
+    </div>
+    <div class="cb-actions">
+      <a href="#" data-cb-action="settings" class="cb-btn is-secondary">Instellingen</a>
+      <a href="#" data-cb-action="save" class="cb-btn is-secondary">Keuze opslaan</a>
+      <a href="#" data-cb-action="reject" class="cb-btn">Weigeren</a>
+      <a href="#" data-cb-action="accept" class="cb-btn">Alles accepteren</a>
+    </div>
+  </div>
+</div>
+
+<script>document.addEventListener('flits:consent', function (e) { console.log('flits:consent', e.detail); });</script>
+<!-- 4. Footer-script (in Webflow: jsDelivr-URL met versie-tag) -->
+<script src="../dist/consent.min.js" defer></script>
+</body>
+</html>
