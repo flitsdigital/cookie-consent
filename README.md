@@ -48,7 +48,17 @@ Regels:
 - Toggles moeten link-blocks zijn (`<a href="#">`): dan werken Tab, Spatie en Enter zonder extra attributen.
 - Categorieën zonder toggle in de component worden genegeerd. Een toggle zonder categorie in de config geeft een `console.warn`.
 - Zonder `settings`/`save`-knop werkt de eenvoudige variant (alleen accepteren/weigeren).
-- Referentie-markup en -CSS staan in [`webflow/component.html`](webflow/component.html) en [`webflow/component.css`](webflow/component.css).
+- Referentie-markup: [`webflow/component.html`](webflow/component.html). Plakbaar in de Designer: [`webflow/clipboard.json`](webflow/clipboard.json) (inhoud kopiëren, cmd+v op het canvas). Beide worden gegenereerd door `node webflow/clipboard.js`.
+
+### Styling (Osmo-stijl)
+
+Alle class-styling zit in de Webflow-classes en verwijst naar `--cb-*`-variabelen. In [`webflow/custom.css`](webflow/custom.css) staan de `:root`-variabelen plus wat Webflow niet kan (`:focus-visible`, `.cb-switch.is-on .cb-knob`, `prefers-reduced-motion`). Plak die in Site settings → Head in een `<style>`-tag. Kleuren of maten aanpassen = alleen variabelen wijzigen:
+
+```css
+:root { --cb-color-accent: #6840ff; --cb-color-accent-text: #fff; --cb-border-radius: 4px; }
+```
+
+Toegankelijkheid van de component: `role="dialog"` met `aria-labelledby`/`aria-describedby`, `<h2>`-titel, `role="switch"` + `aria-checked` + `aria-label` op de schakelaars, zichtbare focusring via `--cb-color-focus`, knoppen ≥ 41px hoog, standaard donkere tekst op de accentkleur (5:1). Let bij eigen kleuren op ≥ 4,5:1 contrast tussen `--cb-color-accent` en `--cb-color-accent-text`.
 
 ## 3. Configuratie
 

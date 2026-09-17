@@ -1,0 +1,48 @@
+/* Cookie banner – variabelen + wat Webflow niet kan (focus-visible, descendant-selectors, reduced motion).
+   In Webflow: Site settings → Custom code → Head, in een <style>-tag. Alle overige styling zit in de classes. */
+:root {
+  --cb-color: #1b020d;
+  --cb-color-background: #fff;
+  --cb-color-surface: #f6f1f1;
+  --cb-color-accent: #ec4d94;
+  --cb-color-accent-text: #1b020d; /* donker op roze = 5:1, wit op roze haalt AA niet */
+  --cb-color-switch-off: #d9cfd3;
+  --cb-color-focus: #1b020d;
+  --cb-font-size: 15px;
+  --cb-font-size-small: 13px;
+  --cb-font-size-title: 20px;
+  --cb-padding: 24px;
+  --cb-offset: 16px;
+  --cb-max-width: 560px;
+  --cb-border-radius: 12px;
+  --cb-button-radius: 8px;
+  --cb-shadow: 0 12px 40px rgba(27, 2, 13, 0.18);
+  --cb-switch-width: 44px;
+  --cb-switch-height: 24px;
+  --cb-switch-padding: 3px;
+  --cb-z-index: 9999;
+  --cb-ease: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.cb-knob {
+  transition: translate 0.25s var(--cb-ease);
+}
+
+.cb-switch.is-on .cb-knob {
+  translate: calc(var(--cb-switch-width) - var(--cb-switch-height)) 0;
+}
+
+.cb-btn:focus-visible,
+.cb-switch:focus-visible,
+.cb-link:focus-visible {
+  outline: 2px solid var(--cb-color-focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cb-knob { transition: none; }
+}
+
+@media (max-width: 479px) {
+  :root { --cb-offset: 8px; --cb-padding: 20px; }
+}

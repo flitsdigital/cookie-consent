@@ -1,30 +1,39 @@
-<!-- Webflow-component "Global / Cookiebanner" (gepubliceerde HTML, ter referentie).
-     Alleen de data-attributen zijn het contract; classes zijn vrij. Webflow voegt zelf w-inline-block toe aan link-blocks. -->
-<div data-cb="banner" role="dialog" aria-label="Cookie-instellingen" class="cb-banner">
+<!-- Gegenereerd door webflow/clipboard.js. Alleen de data-/aria-attributen zijn het contract; classes zijn vrij. -->
+<div data-cb="banner" role="dialog" aria-labelledby="cb-title" aria-describedby="cb-text" class="cb-banner">
   <div class="cb-card">
-    <div class="cb-title">Wij gebruiken cookies</div>
-    <p class="cb-text">Wij gebruiken functionele cookies om de website goed te laten werken. Met uw toestemming gebruiken we ook cookies voor statistieken (Google Analytics en Microsoft Clarity) en advertenties (Google Ads en Meta). Lees meer in ons <a href="/privacybeleid" class="cb-link">privacybeleid</a>.</p>
+    <h2 id="cb-title" class="cb-title">Wij gebruiken cookies</h2>
+    <p id="cb-text" class="cb-text">Wij gebruiken functionele cookies om de website goed te laten werken. Met uw toestemming gebruiken we ook cookies voor statistieken (Google Analytics en Microsoft Clarity) en advertenties (Google Ads en Meta).</p>
+    <a href="/privacybeleid" class="cb-link">Lees ons privacybeleid</a>
     <div data-cb="prefs" class="cb-prefs">
       <div class="cb-row">
         <div class="cb-row-content">
           <div class="cb-row-title">Noodzakelijk</div>
           <div class="cb-row-text">Nodig om de website goed te laten werken. Staat altijd aan.</div>
         </div>
-        <div aria-disabled="true" class="cb-switch is-on is-locked"><div class="cb-knob"></div></div>
+        <div role="switch" aria-checked="true" aria-disabled="true" aria-label="Noodzakelijk" class="cb-switch is-on is-locked">
+          <div class="cb-knob">
+          </div>
+        </div>
       </div>
       <div class="cb-row">
         <div class="cb-row-content">
           <div class="cb-row-title">Statistieken</div>
-          <div class="cb-row-text">Inzicht in hoe bezoekers de website gebruiken, via Google Analytics en Microsoft Clarity (heatmaps en geanonimiseerde sessie-opnames).</div>
+          <div class="cb-row-text">Inzicht in hoe bezoekers de website gebruiken, via Google Analytics en Microsoft Clarity.</div>
         </div>
-        <a href="#" role="switch" aria-checked="false" aria-label="Statistieken" data-cb-toggle="analytics" class="cb-switch w-inline-block"><div class="cb-knob"></div></a>
+        <a href="#" role="switch" aria-checked="false" aria-label="Statistieken" data-cb-toggle="analytics" class="cb-switch w-inline-block">
+          <div class="cb-knob">
+          </div>
+        </a>
       </div>
       <div class="cb-row">
         <div class="cb-row-content">
           <div class="cb-row-title">Marketing</div>
           <div class="cb-row-text">Meten en tonen van advertenties via Google Ads en Meta (Facebook en Instagram).</div>
         </div>
-        <a href="#" role="switch" aria-checked="false" aria-label="Marketing" data-cb-toggle="marketing" class="cb-switch w-inline-block"><div class="cb-knob"></div></a>
+        <a href="#" role="switch" aria-checked="false" aria-label="Marketing" data-cb-toggle="marketing" class="cb-switch w-inline-block">
+          <div class="cb-knob">
+          </div>
+        </a>
       </div>
     </div>
     <div class="cb-actions">
@@ -36,4 +45,4 @@
   </div>
 </div>
 <!-- Ergens in de footer: -->
-<a href="#" data-cb-open="true" class="paragraph-sm">Cookie-instellingen</a>
+<a href="#" data-cb-open="true">Cookie-instellingen</a>

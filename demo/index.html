@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Flits cookie consent – demo</title>
-<link rel="stylesheet" href="../webflow/component.css">
+<link rel="stylesheet" href="../webflow/custom.css">
+<link rel="stylesheet" href="../webflow/classes.css">
 <style>body{font-family:system-ui,sans-serif;margin:0;padding:24px;color:#1b020d}pre{background:#f6f1f1;padding:12px;font-size:12px;overflow:auto;max-height:40vh}</style>
 
 <!-- 1. Config (per klant) -->
@@ -41,31 +42,41 @@ dataLayer.push({ event: 'gtm.js' });
 <pre id="log"></pre>
 <p><a href="#" data-cb-open="true">Cookie-instellingen</a> · <a href="#" onclick="FlitsConsent.reset();return false">Reset</a></p>
 
-<div data-cb="banner" role="dialog" aria-label="Cookie-instellingen" class="cb-banner">
+<div data-cb="banner" role="dialog" aria-labelledby="cb-title" aria-describedby="cb-text" class="cb-banner">
   <div class="cb-card">
-    <div class="cb-title">Wij gebruiken cookies</div>
-    <p class="cb-text">Wij gebruiken functionele cookies om de website goed te laten werken. Met uw toestemming gebruiken we ook cookies voor statistieken (Google Analytics en Microsoft Clarity) en advertenties (Google Ads en Meta). Lees meer in ons <a href="/privacybeleid" class="cb-link">privacybeleid</a>.</p>
+    <h2 id="cb-title" class="cb-title">Wij gebruiken cookies</h2>
+    <p id="cb-text" class="cb-text">Wij gebruiken functionele cookies om de website goed te laten werken. Met uw toestemming gebruiken we ook cookies voor statistieken (Google Analytics en Microsoft Clarity) en advertenties (Google Ads en Meta).</p>
+    <a href="/privacybeleid" class="cb-link">Lees ons privacybeleid</a>
     <div data-cb="prefs" class="cb-prefs">
       <div class="cb-row">
         <div class="cb-row-content">
           <div class="cb-row-title">Noodzakelijk</div>
           <div class="cb-row-text">Nodig om de website goed te laten werken. Staat altijd aan.</div>
         </div>
-        <div aria-disabled="true" class="cb-switch is-on is-locked"><div class="cb-knob"></div></div>
+        <div role="switch" aria-checked="true" aria-disabled="true" aria-label="Noodzakelijk" class="cb-switch is-on is-locked">
+          <div class="cb-knob">
+          </div>
+        </div>
       </div>
       <div class="cb-row">
         <div class="cb-row-content">
           <div class="cb-row-title">Statistieken</div>
-          <div class="cb-row-text">Inzicht in hoe bezoekers de website gebruiken, via Google Analytics en Microsoft Clarity (heatmaps en geanonimiseerde sessie-opnames).</div>
+          <div class="cb-row-text">Inzicht in hoe bezoekers de website gebruiken, via Google Analytics en Microsoft Clarity.</div>
         </div>
-        <a href="#" role="switch" aria-checked="false" aria-label="Statistieken" data-cb-toggle="analytics" class="cb-switch w-inline-block"><div class="cb-knob"></div></a>
+        <a href="#" role="switch" aria-checked="false" aria-label="Statistieken" data-cb-toggle="analytics" class="cb-switch w-inline-block">
+          <div class="cb-knob">
+          </div>
+        </a>
       </div>
       <div class="cb-row">
         <div class="cb-row-content">
           <div class="cb-row-title">Marketing</div>
           <div class="cb-row-text">Meten en tonen van advertenties via Google Ads en Meta (Facebook en Instagram).</div>
         </div>
-        <a href="#" role="switch" aria-checked="false" aria-label="Marketing" data-cb-toggle="marketing" class="cb-switch w-inline-block"><div class="cb-knob"></div></a>
+        <a href="#" role="switch" aria-checked="false" aria-label="Marketing" data-cb-toggle="marketing" class="cb-switch w-inline-block">
+          <div class="cb-knob">
+          </div>
+        </a>
       </div>
     </div>
     <div class="cb-actions">

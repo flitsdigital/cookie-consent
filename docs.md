@@ -4,8 +4,10 @@ Vijf stappen, ~10 minuten. Uitgebreide uitleg staat in [README.md](README.md).
 
 ## 1. Component plaatsen
 
-Sleep *Global / Cookiebanner* uit de Library in de footer-component. Zet op de wrapper `display: none`.
+Kopieer de inhoud van `webflow/clipboard.json`, selecteer in de Designer de footer-component en plak (cmd+v). Maak er een component *Global / Cookiebanner* van.
 Zet in de footer een link met custom attribute `data-cb-open` = `true` (bv. "Cookie-instellingen").
+
+Plak daarnaast `webflow/custom.css` in Site settings → Custom code → Head, in een `<style>`-tag. Daarin staan de `--cb-*`-variabelen: kleuren en maten pas je dáár aan, niet in de classes.
 
 ## 2. Head-code
 
