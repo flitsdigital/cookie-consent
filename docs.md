@@ -4,7 +4,7 @@ Vijf stappen, ~10 minuten. Uitgebreide uitleg staat in [README.md](README.md).
 
 ## 1. Component plaatsen
 
-Kopieer de inhoud van `webflow/clipboard.json`, selecteer in de Designer de footer-component en plak (cmd+v). Maak er een component *Global / Cookiebanner* van.
+Open de demo (`python3 -m http.server 4173` → <http://localhost:4173/demo/>), klik **Copy to Webflow**, selecteer in de Designer de footer-component en plak (cmd+v). Het JSON-bestand zelf kopiëren werkt niet: Webflow leest alleen clipboard-data van het type `application/json`. Maak er een component *Global / Cookiebanner* van.
 Zet in de footer een link met custom attribute `data-cb-open` = `true` (bv. "Cookie-instellingen").
 
 Plak daarnaast `webflow/custom.css` in Site settings → Custom code → Head, in een `<style>`-tag. Daarin staan de `--cb-*`-variabelen: kleuren en maten pas je dáár aan, niet in de classes.

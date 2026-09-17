@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const styles = [], nodes = [];
 const v = (n) => `@raw<|var(--cb-${n})|>`;
-const style = (name, styleLess, variants = {}, comb = '') => { const s = { _id: randomUUID(), fake: false, type: 'class', name, namespace: '', comb, styleLess, variants, children: [], createdBy: 'flits', origin: null, selector: null }; styles.push(s); return s; };
+const style = (name, styleLess, variants = {}, comb = '') => { const s = { _id: randomUUID(), fake: false, type: 'class', name, namespace: '', comb, styleLess, variants, children: [], createdBy: '000000000000000000000000', origin: null, selector: null }; styles.push(s); return s; };
 const combo = (parent, name, styleLess) => { const s = style(name, styleLess, {}, '&'); s.parentName = parent.name; parent.children.push(s._id); return s; };
 const text = (val) => { const t = { _id: randomUUID(), text: true, v: val }; nodes.push(t); return t._id; };
 const node = (type, tag, classes, children, data) => { const n = { _id: randomUUID(), type, tag, classes: classes.map((c) => c._id), children, data }; nodes.push(n); return n._id; };

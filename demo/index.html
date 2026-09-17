@@ -40,7 +40,18 @@ dataLayer.push({ event: 'gtm.js' });
 <h1>Cookie consent demo</h1>
 <p>Open de console voor <code>flits:consent</code>-events. dataLayer:</p>
 <pre id="log"></pre>
-<p><a href="#" data-cb-open="true">Cookie-instellingen</a> · <a href="#" onclick="FlitsConsent.reset();return false">Reset</a></p>
+<p><a href="#" data-cb-open="true">Cookie-instellingen</a> · <a href="#" onclick="FlitsConsent.reset();return false">Reset</a> · <button id="copy-wf" type="button">Copy to Webflow</button></p>
+<script>
+// Webflow accepteert alleen clipboard-data met MIME-type application/json (zelfde truc als Osmo)
+document.getElementById('copy-wf').addEventListener('click', async function () {
+  var json = await (await fetch('../webflow/clipboard.json')).text();
+  function onCopy(e) { e.preventDefault(); e.clipboardData.setData('application/json', json); e.clipboardData.setData('text/plain', json); }
+  document.addEventListener('copy', onCopy);
+  document.execCommand('copy');
+  document.removeEventListener('copy', onCopy);
+  this.textContent = 'Gekopieerd – plak (cmd+v) in de Designer';
+});
+</script>
 
 <div data-cb="banner" role="dialog" aria-labelledby="cb-title" aria-describedby="cb-text" class="cb-banner">
   <div class="cb-card">

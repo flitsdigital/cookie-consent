@@ -48,7 +48,7 @@ Regels:
 - Toggles moeten link-blocks zijn (`<a href="#">`): dan werken Tab, Spatie en Enter zonder extra attributen.
 - Categorieën zonder toggle in de component worden genegeerd. Een toggle zonder categorie in de config geeft een `console.warn`.
 - Zonder `settings`/`save`-knop werkt de eenvoudige variant (alleen accepteren/weigeren).
-- Referentie-markup: [`webflow/component.html`](webflow/component.html). Plakbaar in de Designer: [`webflow/clipboard.json`](webflow/clipboard.json) (inhoud kopiëren, cmd+v op het canvas). Beide worden gegenereerd door `node webflow/clipboard.js`.
+- Referentie-markup: [`webflow/component.html`](webflow/component.html). Plakbaar in de Designer via de knop **Copy to Webflow** in de demo (Webflow leest alleen `application/json` van de clipboard, dus het bestand [`webflow/clipboard.json`](webflow/clipboard.json) zelf kopiëren werkt niet). Beide worden gegenereerd door `node webflow/clipboard.js`.
 
 ### Styling (Osmo-stijl)
 
