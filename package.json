@@ -8,7 +8,7 @@
     "pretest": "npm run build",
     "test": "playwright test",
     "preversion": "npm test",
-    "version": "node changelog.js && git add CHANGELOG.md dist",
+    "version": "npm run build && node changelog.js && git add CHANGELOG.md dist",
     "release": "npm version"
   },
   "devDependencies": {
